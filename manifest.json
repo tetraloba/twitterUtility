@@ -1,0 +1,18 @@
+{
+  "name": "twitterUtility",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "description": "chromium extension for twitter",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/settings/muted_keywords"
+      ],
+      "js": [
+        "DL_mutedKeywords.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
+}
