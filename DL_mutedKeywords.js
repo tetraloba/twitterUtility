@@ -11,6 +11,19 @@ function getMutedKeywords() {
     }
     /* mutedKeywords配列の中身をコンソールに出力 */
     mutedKeywords.forEach(element => console.log(element));
+    /* BlobとそのURLを作成して表示 */
+    const bom  = new Uint8Array([0xEF, 0xBB, 0xBF]); // utf-8 BOM
+    let str_blob = '';
+    mutedKeywords.forEach(function(mutedKeyword){
+        str_blob += mutedKeyword + "\n";
+    });
+    const str_url = URL.createObjectURL(new Blob([bom, str_blob], {type: "text/csv"})); // URLの生成
+    const title = mainRole.firstChild.firstChild.firstChild.firstChild;
+    const new_element = document.createElement("a");
+    new_element.download = 'mutedKeywords.csv';
+    new_element.href = str_url;
+    new_element.textContent = 'Download mutedKeywords.csv here!';
+    title.appendChild(new_element); // コメント部分にURLを追加
 }
 
 function main(e) {
