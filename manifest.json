@@ -1,6 +1,6 @@
 {
   "name": "twitterUtility",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "manifest_version": 3,
   "description": "chromium extension for twitter",
   "content_scripts": [
@@ -13,6 +13,14 @@
       ],
       "run_at": "document_end",
       "all_frames": true
+    },
+    {
+      "matches": [
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "killAnnoying.js"
+      ]
     }
   ]
 }
